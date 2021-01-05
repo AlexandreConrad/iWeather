@@ -1,18 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import {Layout} from "@ui-kitten/components";
-import Switch from "./Switch.js";
 
-const Test = () => {
+const TestBis = () => {
     return (
         <Layout style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
-            <Switch/>
+            <Text>Changement de page !</Text>
         </Layout>
     );
 }
 
-export default Test;
+export default TestBis;
 
 const styles = StyleSheet.create({
     container: {
@@ -21,5 +19,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-
 
