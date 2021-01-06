@@ -29,7 +29,8 @@
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "~7.9.0",
+    "@ui-kitten/eva-icons": "^5.0.0"
   },
   "private": true
 }
