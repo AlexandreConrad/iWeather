@@ -1,15 +1,17 @@
-import SearchIcon from '../../assets/icon.png';
-import Icon from '../../assets/icon.png';
 import React from "react";
+import SearchIcon from '../../assets/icon.png';
+import {Icon} from "@ui-kitten/components";
+import * as eva from "@eva-design/eva";
 
 const Assets = {
     icons: {
         search: SearchIcon,
-        icon : Icon,
     },
-    BellIcon: {
-        bell: "bell-outline",
-    },
+    StarIcon : (props) => (
+        <Icon {...props} name='settings-2-outline'/>
+    ),
+    darkMode : {value : eva.light, onChange : () => {}},
+    text : "default",
 };
 
-export default PinIcon;
+export default Assets;
