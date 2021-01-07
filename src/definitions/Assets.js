@@ -1,17 +1,26 @@
 import React from "react";
 import SearchIcon from '../../assets/icon.png';
 import {Icon} from "@ui-kitten/components";
-import * as eva from "@eva-design/eva";
 
 const Assets = {
     icons: {
         search: SearchIcon,
     },
-    StarIcon : (props) => (
+    SettingsIcon : (props) => (
         <Icon {...props} name='settings-2-outline'/>
     ),
-    darkMode : {value : eva.light, onChange : () => {}},
-    text : "default",
+    SearchIcon : (props) => (
+        <Icon {...props} name='search'/>
+    ),
+    globeIcon : (props) => (
+        <Icon {...props} name='globe-2-outline'/>
+    ),
+    PinIcon : (props) => (
+        <Icon {...props} name='pin-outline'/>
+    ),
+    GeoIcon : (props) => (
+        <Icon {...props} name='compass-outline'/>
+    ),
 };
 
 export default Assets;

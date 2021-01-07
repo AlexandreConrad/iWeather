@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
 import {Layout,Input} from "@ui-kitten/components";
 
 const useInputState = (initialValue = '') => {
@@ -14,7 +13,6 @@ const InputBox = ({placeholder}) => {
     return (
         <Layout>
             <Input
-                style={styles.input}
                 status='primary'
                 placeholder={placeholder}
                 {...primaryInputState}
@@ -24,12 +22,5 @@ const InputBox = ({placeholder}) => {
 }
 
 export default InputBox;
-
-const styles = StyleSheet.create({
-    input: {
-        flex: 1,
-        margin: 2,
-    },
-});
 
 
