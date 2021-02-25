@@ -1,9 +1,9 @@
 /** React **/
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 
 /** UI KItten **/
-import {Layout, Text, Button} from "@ui-kitten/components";
+import {Layout, Text, Button, Input} from "@ui-kitten/components";
 
 /** Import des componenets **/
 import InputBox from "../components/InputBox";
@@ -15,7 +15,21 @@ import SettingsPage from "./Settings";
 import Assets from "../definitions/Assets";
 import StyleSearchPage from "../definitions/SearchPageStyle";
 
+/** Call API **/
+import {getWeatherMapName} from "../api/WeatherMap";
+
 const SearchPage = () => {
+
+    /** Constantes **/
+    const [country , setCountry] = useState(false);
+    const [postalCode , setPostalCode ] = useState([]);
+    const [city, setCity] = useState("");
+
+    const searchCity = async() =>{
+        console.log(city);
+        let response = await getWeatherMapName(city);
+        console.log(response.data);
+    }
 
     return (
         <Layout style={StyleSearchPage.container}>
@@ -27,15 +41,16 @@ const SearchPage = () => {
 
             <View style={StyleSearchPage.body}>
                 <View style={StyleSearchPage.firstLineInputBox}>
-                    <InputBox placeholder="Ville"/>
+                    <Input placeholder="Ville" onChangeText={(text) => setCity(text)}/>
                 </View>
                 <View style={StyleSearchPage.secondLineInputBox}>
-                    <InputBox style={StyleSearchPage.inputBox} placeholder="Code postal"/>
-                    <InputBox style={StyleSearchPage.inputBox} placeholder="Pays"/>
+                    <Input style={StyleSearchPage.inputBox} placeholder="Code postal" onChangeText={(text) => setPostalCode(text)}/>
+                    <Input style={StyleSearchPage.inputBox} placeholder="Pays" onChangeText={(text) => setCountry(text)}/>
                 </View>
 
                 <View style={StyleSearchPage.buttonLine}>
-                    <Button style={StyleSearchPage.button} appearance='outline' accessoryLeft={Assets.SearchIcon}>
+                    <Button style={StyleSearchPage.button} appearance='outline' accessoryLeft={Assets.SearchIcon}
+                        onPress={() => {searchCity()}}>
                         Rechercher
                     </Button>
                     <Button style={StyleSearchPage.button} appearance='outline' accessoryLeft={Assets.GeoIcon}>
