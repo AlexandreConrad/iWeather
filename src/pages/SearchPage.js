@@ -28,7 +28,9 @@ const SearchPage = ({navigation,favObjects}) => {
     /** Recherche dans l'API de la ville **/
     const searchCity = async() =>{
         let response = await getWeatherMapName(city);
-        await navigationDetailsCity(response.data);
+        //console.log(response.data);
+        //TODO Choix si plusieurs fois la même ville
+        await navigationDetailsCity(response.data.list[0]);
     }
 
     /** Navigations vers la personne  **/

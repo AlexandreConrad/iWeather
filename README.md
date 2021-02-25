@@ -61,6 +61,7 @@ Liste les programmes/logiciels/ressources que nous avons utilisé pour développ
 * [Eva-Icons](https://akveo.github.io/eva-icons/#/) - Icons Eva
 * [Axios](https://www.npmjs.com/package/axios) - API
 * [Redux](https://www.npmjs.com/package/redux) - Stockage
+* [Amcharts](https://www.amcharts.com/demos/) - Animation graphique et icons
 
 Pipline d'intégration avec :
 
