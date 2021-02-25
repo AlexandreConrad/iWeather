@@ -1,36 +1,34 @@
 /** Import Expo et React **/
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 /** Import UI Kitten **/
-import {ApplicationProvider,IconRegistry} from '@ui-kitten/components';
-import { default as theme } from './src/definitions/custom-theme.json';
-import * as eva from "@eva-design/eva";
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import {EvaIconsPack} from '@ui-kitten/eva-icons';
+import * as eva from '@eva-design/eva';
+import theme from './src/definitions/custom-theme.json';
+import {ApplicationProvider, IconRegistry, Layout} from '@ui-kitten/components';
 
 /** Import des components **/
-import NavBar from "./src/components/NavBar";
+import NavBar from "./src/navigations/NavBar";
 
-/** Constantes pour les préferences **/
-const loadingTasks = [
-    () =>
-        AsyncStorage.getItem('theme').then((result) => {
-            if (result === null) {
-                return ['theme', 'light'];
-            } else {
-                return ['theme', result];
-            }
-        }),
-];
+/** Redux **/
+import {Provider} from "react-redux";
+import {Persistor,Storage} from "./src/reduxStore/config";
+import {PersistGate} from 'redux-persist/integration/react';
 
 export default function App() {
 
     return (
         <>
-            <IconRegistry icons={EvaIconsPack} />
+            <IconRegistry icons={[EvaIconsPack]} />
             <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
-                <NavBar/>
-                <StatusBar style="auto"/>
+                <Provider store={Storage} >
+                    <PersistGate loading={null} persistor={Persistor}>
+                        <NavBar/>
+                        <StatusBar style="auto" />
+                    </PersistGate>
+                </Provider>
             </ApplicationProvider>
         </>
     );

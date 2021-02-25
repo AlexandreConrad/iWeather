@@ -18,17 +18,22 @@ import StyleSearchPage from "../definitions/SearchPageStyle";
 /** Call API **/
 import {getWeatherMapName} from "../api/WeatherMap";
 
-const SearchPage = () => {
+const SearchPage = ({navigation,favObjects}) => {
 
     /** Constantes **/
     const [country , setCountry] = useState(false);
     const [postalCode , setPostalCode ] = useState([]);
     const [city, setCity] = useState("");
 
+    /** Recherche dans l'API de la ville **/
     const searchCity = async() =>{
-        console.log(city);
         let response = await getWeatherMapName(city);
-        console.log(response.data);
+        await navigationDetailsCity(response.data);
+    }
+
+    /** Navigations vers la personne  **/
+    const navigationDetailsCity = async(dataAPI) => {
+        navigation.navigate("CityDetailsPage", {dataAPI});
     }
 
     return (
@@ -50,7 +55,7 @@ const SearchPage = () => {
 
                 <View style={StyleSearchPage.buttonLine}>
                     <Button style={StyleSearchPage.button} appearance='outline' accessoryLeft={Assets.SearchIcon}
-                        onPress={() => {searchCity()}}>
+                        onPress={async() => {await searchCity()}}>
                         Rechercher
                     </Button>
                     <Button style={StyleSearchPage.button} appearance='outline' accessoryLeft={Assets.GeoIcon}>

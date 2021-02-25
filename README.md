@@ -59,7 +59,8 @@ Liste les programmes/logiciels/ressources que nous avons utilisé pour développ
 * [UIKitten](https://akveo.github.io/react-native-ui-kitten/docs/getting-started/what-is-ui-kitten#whats-included) - Framework pour le CSS
 * [Eva](https://colors.eva.design/?utm_campaign=eva_colors%20-%20home%20-%20kitten_docs&utm_source=ui_kitten&utm_medium=referral&utm_content=branding_article_link) - Eva Design System
 * [Eva-Icons](https://akveo.github.io/eva-icons/#/) - Icons Eva
-* [API-XXX](#) - #A FAIRE#
+* [Axios](https://www.npmjs.com/package/axios) - API
+* [Redux](https://www.npmjs.com/package/redux) - Stockage
 
 Pipline d'intégration avec :
 
