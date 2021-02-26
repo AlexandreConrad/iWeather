@@ -21,6 +21,12 @@ const Assets = {
     GeoIcon : (props) => (
         <Icon {...props} name='compass-outline'/>
     ),
+    HeartIcon : (props) => (
+        <Icon {...props} name='heart-outline'/>
+    ),
+    HeartFull : (props) => (
+        <Icon {...props} name='heart'/>
+    ),
 };
 
 export default Assets;
