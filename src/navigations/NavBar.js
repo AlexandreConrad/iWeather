@@ -10,7 +10,7 @@ import {StyleHeader} from "../definitions/SearchPageStyle";
 
 /** Import des components **/
 import SearchPage from "../pages/SearchPage";
-import TestBis from "../pages/TestBis";
+import ListCity from "../pages/FavorisPage.js";
 import Test from "../pages/Test";
 import CityDetailsPage from "../pages/CityDetailsPage";
 
@@ -18,6 +18,7 @@ import CityDetailsPage from "../pages/CityDetailsPage";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
+import ListItemCity from "../components/ListItemCity";
 
 /** Constantes **/
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -72,7 +73,7 @@ function FavPageScreen() {
         >
             <FavNavigation.Screen
                 name="ViewFavPage"
-                component={TestBis}
+                component={ListCity}
                 options={{
                     title: 'Favoris',
                     headerStyle: {
