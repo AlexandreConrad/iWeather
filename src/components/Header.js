@@ -26,7 +26,7 @@ const Header = props => {
 };
 
 /**
- * Fonction qui permet d'ajouter à notre props le dakrMode selectionné avant
+ * Fonction qui permet d'ajouter à notre props le darkMode selectionné avant
  * @param state (State de redux)
  * @returns {{light: *}}
  */

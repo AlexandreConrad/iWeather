@@ -1,31 +1,22 @@
 import React from 'react';
-
-import {StatusBar} from 'expo-status-bar';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
-import * as eva from '@eva-design/eva';
-import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
-
-import NavBar from "./src/navigations/NavBar";
+import {IconRegistry} from '@ui-kitten/components';
 import {Provider} from "react-redux";
 import {Persistor, Storage} from "./src/reduxStore/config";
 import {PersistGate} from 'redux-persist/integration/react';
+import Application from "./src/Application";
 
-export default function App() {
+const App = () => {
 
-    /** Variables pour le darkMode**/
-    const light = Storage.getState().system.light;
+    return <>
+        <IconRegistry icons={[EvaIconsPack]}/>
+        <Provider store={Storage}>
+            <PersistGate loading={null} persistor={Persistor}>
+                <Application/>
+            </PersistGate>
+        </Provider>
+    </>
+};
 
-    return (
-        <>
-            <IconRegistry icons={[EvaIconsPack]}/>
-            <ApplicationProvider {...eva} theme={light ? eva.light : eva.dark}>
-                <Provider store={Storage}>
-                    <PersistGate loading={null} persistor={Persistor}>
-                        <NavBar/>
-                        <StatusBar style="auto"/>
-                    </PersistGate>
-                </Provider>
-            </ApplicationProvider>
-        </>
-    );
-}
+
+export default App
