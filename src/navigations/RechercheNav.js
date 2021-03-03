@@ -4,7 +4,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 
 const {Navigator, Screen} = createStackNavigator();
 
-const RechercheNav = props => {
+const RechercheNav = () => {
     return <Navigator initialRouteName="Recherche" headerMode={"none"}>
         <Screen name={"Recherche"} component={RecherchePage}/>
     </Navigator>

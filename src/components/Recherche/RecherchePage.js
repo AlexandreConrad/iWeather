@@ -13,13 +13,14 @@ const RecherchePage = () => {
     const [recherches, setRecherches] = useState([]);
 
     useEffect(() => {
-        weatherSearchByCity(city, stateCode, country).then(result => {
-            if (!result.error) {
-                setRecherches(result.data.list)
-            } else {
-                setRecherches([])
-            }
-        })
+        if (city !== "" || stateCode !== "" || country !== "")
+            weatherSearchByCity(city, stateCode, country).then(result => {
+                if (!result.error) {
+                    setRecherches(result.data.list)
+                } else {
+                    setRecherches([])
+                }
+            })
 
     }, [city, stateCode, country]);
 
