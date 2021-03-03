@@ -39,6 +39,19 @@ Pour utiliser notre application, il suffit :
 
 * [Git](https://github.com/AlexandreConrad/iWeather) - Clôner le projet GIT
 
+Ajouter une configuration pour lancer l'application :
+
+    1) Add Configuration
+    2) Template
+    3) NPM
+    4) package.json : mettre le chemin d'acccès
+    5) Command : start
+    6) Environnement : weatherKey=APIKEY
+    
+* [Image](https://github.com/AlexandreConrad/iWeather/tree/main/docs/ConfigurationEnvironnnement.PNG) - Image d'exemple de configuration
+
+Cette solution permet d'avoir la clé API en local dans son ordinateur et non sur GIT.
+
 ## Démarrage
 
 Afin de lancer le projet
