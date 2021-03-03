@@ -1,12 +1,19 @@
+import React from "react";
+
 import {connect} from "react-redux";
 import {ApplicationProvider} from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
-import NavBar from "./navigations/NavBar";
-import React from "react";
+
+import Navigation from "./navigations/Navigation";
+
+import Header from "./components/Header";
+import {StatusBar} from "expo-status-bar"; // Permet de cacher la barre du téléphone
 
 const Application = props => {
     return <ApplicationProvider {...eva} theme={props.light ? eva.light : eva.dark}>
-        <NavBar/>
+        <StatusBar hidden={true}/>
+        <Header/>
+        <Navigation/>
     </ApplicationProvider>
 };
 
