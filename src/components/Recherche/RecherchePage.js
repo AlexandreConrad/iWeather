@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 import {StyleSheet} from 'react-native';
-import {Button, Divider, Input, Layout, Text} from "@ui-kitten/components";
+import {Button, Input, Layout, List} from "@ui-kitten/components";
 import {weatherSearchByCity} from "../../api/WeatherMap";
 import RechercheCard from "./RechercheCard";
 
@@ -25,14 +25,7 @@ const RecherchePage = () => {
 
     return <Layout style={styles.container}>
 
-        {/** Welcome Layout*/}
-        <Layout style={styles.welcome}>
-            <Text category={"h3"}>Welcome</Text>
-        </Layout>
-
-        <Divider/>
-
-        {/** Search Layout */}
+        {/** Zone de recherche */}
         <Layout>
             <Layout style={styles.row}>
                 <Input
@@ -63,14 +56,12 @@ const RecherchePage = () => {
             </Layout>
         </Layout>
 
-        <Divider/>
-
         <Layout style={styles.search} level={"2"}>
-            {recherches.map((recherche, index) =>
-                <RechercheCard
-                    key={index}
-                    recherche={recherche}
-                />)}
+            <List
+                style={{margin: 10}}
+                data={recherches}
+                renderItem={RechercheCard}
+            />
         </Layout>
     </Layout>
 };
@@ -79,22 +70,19 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    welcome: {
-        padding: 4,
-        alignItems: "center"
-    },
     row: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"
     },
     input: {
-        margin: 10,
-        marginTop: 5,
-        marginBottom: 5,
+        margin: 20,
+        marginTop: 10,
+        marginBottom: 10,
         flex: 1
     },
     search: {
+        marginTop: 20,
         flex: 1
     }
 });

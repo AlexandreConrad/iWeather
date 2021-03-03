@@ -1,7 +1,7 @@
 import React from "react";
 
 import {Layout, Text, TopNavigation, TopNavigationAction} from "@ui-kitten/components";
-import {MoonIcon, SunIcon} from "../definitions/Assets";
+import {MoonIcon, SunIcon} from "../definitions/Icons";
 
 import {connect} from "react-redux";
 import {setLight} from "../reduxStore/actions/system";

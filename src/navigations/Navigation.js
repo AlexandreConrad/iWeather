@@ -1,5 +1,5 @@
 import React from 'react';
-import {SearchIcon} from "../definitions/Assets";
+import {SearchIcon} from "../definitions/Icons";
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigation, BottomNavigationTab} from '@ui-kitten/components';
