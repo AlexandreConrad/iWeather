@@ -3,9 +3,9 @@ import {StyleSheet} from 'react-native';
 import {Button, Input, Layout, List} from "@ui-kitten/components";
 import {weatherSearchByCity} from "../../api/WeatherMap";
 import RechercheCard from "./RechercheCard";
+import Header from "../Header";
 
-const RecherchePage = () => {
-
+const RecherchePage = props => {
     const [city, setCity] = useState("");
     const [stateCode, setStateCode] = useState("");
     const [country, setCountry] = useState("");
@@ -25,7 +25,7 @@ const RecherchePage = () => {
     }, [city, stateCode, country]);
 
     return <Layout style={styles.container}>
-
+        <Header/>
         {/** Zone de recherche */}
         <Layout>
             <Layout style={styles.row}>
@@ -61,7 +61,7 @@ const RecherchePage = () => {
             <List
                 style={{margin: 10}}
                 data={recherches}
-                renderItem={RechercheCard}
+                renderItem={render => <RechercheCard item={render.item} navigation={props.navigation}/>}
             />
         </Layout>
     </Layout>

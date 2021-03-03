@@ -1,7 +1,7 @@
 import React from "react";
 
 import {Layout, Text, TopNavigation, TopNavigationAction} from "@ui-kitten/components";
-import {MoonIcon, SunIcon} from "../definitions/Icons";
+import {BackIcon,MoonIcon, SunIcon} from "../definitions/Icons";
 
 import {connect} from "react-redux";
 import {setLight} from "../reduxStore/actions/system";
@@ -14,16 +14,28 @@ import {setLight} from "../reduxStore/actions/system";
 const Header = props => {
 
     /** Constantes **/
-    const {light, setLight} = props;
+    const {light, setLight, navigation} = props;
 
     /** Gestion du darkMode**/
-    const icon = props.light ? MoonIcon : SunIcon;
+    const iconLight = light ? MoonIcon : SunIcon;
 
+    const goBack = () => {
+        if (navigation) {
+            navigation.goBack()
+        }
+    };
+
+    const turnLight = () => {
+        setLight(!light)
+    };
+
+    /** Affichage **/
     return <Layout>
         <TopNavigation
             title={<Text category={"h4"}>iWeather</Text>}
             alignment={"center"}
-            accessoryRight={() => <TopNavigationAction icon={icon} onPressIn={() => setLight(!light)}/>}
+            accessoryLeft={navigation ? () => <TopNavigationAction icon={BackIcon} onPressIn={goBack}/> : undefined}
+            accessoryRight={() => <TopNavigationAction icon={iconLight} onPressIn={turnLight}/>}
         />
     </Layout>
 };

@@ -6,13 +6,11 @@ import * as eva from "@eva-design/eva";
 
 import Navigation from "./navigations/Navigation";
 
-import Header from "./components/Header";
 import {StatusBar} from "expo-status-bar"; // Permet de cacher la barre du téléphone
 
 const Application = props => {
     return <ApplicationProvider {...eva} theme={props.light ? eva.light : eva.dark}>
         <StatusBar hidden={true}/>
-        <Header/>
         <Navigation/>
     </ApplicationProvider>
 };

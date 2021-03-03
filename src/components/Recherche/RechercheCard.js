@@ -1,12 +1,13 @@
 import {Card, Text} from "@ui-kitten/components";
 import React from "react";
 import {Image, StyleSheet, View} from "react-native";
+import {SCREEN_DETAIL} from "../../definitions/ScreenName";
 
-const RechercheCard = ({item}) => {
+const RechercheCard = ({item, navigation}) => {
     const {main, sys, name} = item;
     const weather = item.weather[0];
 
-    return <Card style={styles.card}>
+    return <Card style={styles.card} onPressIn={() => navigation.navigate(SCREEN_DETAIL, {detail: item})}>
         <View style={styles.container}>
             <View style={styles.containerRight}>
                 <Image
