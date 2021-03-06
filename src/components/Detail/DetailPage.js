@@ -7,6 +7,7 @@ import DetailPrincipal from "./DetailPrincipal";
 import DetailMeteoHeure from "./DetailMeteoHeure";
 import DetailInformation from "./DetailInformation";
 import DetailSoleil from "./DetailSoleil";
+import DetailMeteoSemaine from "./DetailMeteoSemaine";
 
 const DetailPage = ({route, navigation}) => {
     const research = route.params.research;
@@ -35,6 +36,8 @@ const DetailPage = ({route, navigation}) => {
         <DetailInformation current={current}/>
         <View style={styles.space}/>
         <DetailSoleil current={current}/>
+        <View style={styles.space}/>
+        <DetailMeteoSemaine daily={daily}/>
     </Layout>
 };
 
