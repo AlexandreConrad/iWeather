@@ -2,17 +2,18 @@ import {Card, Text} from "@ui-kitten/components";
 import React from "react";
 import {Image, StyleSheet, View} from "react-native";
 import {SCREEN_DETAIL} from "../../definitions/ScreenName";
+import {getMeteoIcon} from "../../api/WeatherMap";
 
 const RechercheCard = ({item, navigation}) => {
     const {main, sys, name} = item;
     const weather = item.weather[0];
 
-    return <Card style={styles.card} onPressIn={() => navigation.navigate(SCREEN_DETAIL, {detail: item})}>
+    return <Card style={styles.card} onPressIn={() => navigation.navigate(SCREEN_DETAIL, {research: item})}>
         <View style={styles.container}>
             <View style={styles.containerRight}>
                 <Image
                     style={styles.image}
-                    source={{uri: "http://openweathermap.org/img/wn/" + weather.icon + "@2x.png"}}
+                    source={{uri: getMeteoIcon(weather.icon)}}
                 />
                 <Text style={styles.meteoText}>{Math.floor(main.temp)}°C</Text>
             </View>

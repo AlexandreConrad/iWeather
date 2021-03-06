@@ -1,14 +1,35 @@
-import React from "react"
-import {StyleSheet} from 'react-native';
+import React, {useEffect, useState} from "react"
+import {StyleSheet, View} from 'react-native';
 import {Layout} from "@ui-kitten/components";
 import Header from "../Header";
+import {weatherDetailCity} from "../../api/WeatherMap";
+import DetailPrincipal from "./DetailPrincipal";
+import DetailMeteoHeure from "./DetailMeteoHeure";
 
-const DetailPage = props => {
-    const detail = props.route.params.detail;
+const DetailPage = ({route, navigation}) => {
+    const research = route.params.research;
+
+    const [result, setResult] = useState({});
+    const {current, daily, hourly} = result;
+
+
+    useEffect(() => {
+        weatherDetailCity(research.coord.lat, research.coord.lon).then(result => {
+            setResult(result.data)
+
+        })
+    }, [research.coord.lat, research.coord.lon]);
+
+    if (!current) {
+        return <Layout/>
+    }
 
     return <Layout style={styles.container}>
-        <Header navigation={props.navigation}/>
-
+        <Header navigation={navigation}/>
+        <DetailPrincipal name={research.name} current={current} daily={daily}/>
+        <View style={styles.space}/>
+        <DetailMeteoHeure hourly={hourly}/>
+        <View style={styles.space}/>
     </Layout>
 };
 
@@ -16,20 +37,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    row: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center"
-    },
-    input: {
-        margin: 20,
-        marginTop: 10,
-        marginBottom: 10,
-        flex: 1
-    },
-    search: {
-        marginTop: 20,
-        flex: 1
+    space: {
+        marginTop: 20
     }
 });
 

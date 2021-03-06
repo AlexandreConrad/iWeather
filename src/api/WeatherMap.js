@@ -20,6 +20,14 @@ async function callWeatherMapAPI(endpoint) {
         })
 }
 
+export const getMeteoIcon = code => {
+    return "http://openweathermap.org/img/wn/" + code + "@2x.png"
+};
+
 export async function weatherSearchByCity(cityName, stateCode, country) {
     return await callWeatherMapAPI(`/find?q=${cityName},${stateCode},${country}`)
+}
+
+export async function weatherDetailCity(lat, lon) {
+    return await callWeatherMapAPI(`/onecall?lat=${lat}&lon=${lon}`)
 }

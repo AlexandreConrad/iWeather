@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Button, Input, Layout, List} from "@ui-kitten/components";
 import {weatherSearchByCity} from "../../api/WeatherMap";
 import RechercheCard from "./RechercheCard";
@@ -26,17 +26,17 @@ const RecherchePage = props => {
 
     return <Layout style={styles.container}>
         <Header/>
-        {/** Zone de recherche */}
+        {/** Zone de saisie de recherche */}
         <Layout>
-            <Layout style={styles.row}>
+            <View style={styles.row}>
                 <Input
                     style={styles.input}
                     value={city}
                     onChangeText={nextValue => setCity(nextValue)}
                     placeholder={"Ville"}
                 />
-            </Layout>
-            <Layout style={styles.row}>
+            </View>
+            <View style={styles.row}>
                 <Input
                     style={{...styles.input, flex: 2}}
                     value={stateCode}
@@ -49,14 +49,15 @@ const RecherchePage = props => {
                     onChangeText={nextValue => setCountry(nextValue)}
                     placeholder={"Pays"}
                 />
-            </Layout>
-            <Layout style={styles.row}>
+            </View>
+            <View style={styles.row}>
                 <Button style={styles.input}>
                     Rechercher
                 </Button>
-            </Layout>
+            </View>
         </Layout>
 
+        {/** Zone de recherche */}
         <Layout style={styles.search} level={"2"}>
             <List
                 style={{margin: 10}}
