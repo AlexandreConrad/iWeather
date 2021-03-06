@@ -5,6 +5,8 @@ import Header from "../Header";
 import {weatherDetailCity} from "../../api/WeatherMap";
 import DetailPrincipal from "./DetailPrincipal";
 import DetailMeteoHeure from "./DetailMeteoHeure";
+import DetailInformation from "./DetailInformation";
+import DetailSoleil from "./DetailSoleil";
 
 const DetailPage = ({route, navigation}) => {
     const research = route.params.research;
@@ -30,6 +32,9 @@ const DetailPage = ({route, navigation}) => {
         <View style={styles.space}/>
         <DetailMeteoHeure hourly={hourly}/>
         <View style={styles.space}/>
+        <DetailInformation current={current}/>
+        <View style={styles.space}/>
+        <DetailSoleil current={current}/>
     </Layout>
 };
 
