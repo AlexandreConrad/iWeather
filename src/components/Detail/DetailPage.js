@@ -43,13 +43,9 @@ const DetailPage = ({route, navigation, favorite, addToFavorite, removeToFavorit
         {isInFavorite && <Button onPressIn={handleRemoveToFavorite}>Supprimer des favoris</Button>}
 
         <DetailPrincipal name={research.name} current={current} daily={daily}/>
-        <View style={styles.space}/>
         <DetailMeteoHeure hourly={hourly}/>
-        <View style={styles.space}/>
         <DetailInformation current={current}/>
-        <View style={styles.space}/>
         <DetailSoleil current={current}/>
-        <View style={styles.space}/>
         <DetailMeteoSemaine daily={daily}/>
     </Layout>
 };

@@ -1,4 +1,3 @@
-import React from "react"
 import axios from "axios"
 
 const url_end = `&units=metric&lang=fr&appid=${process.env.weatherKey}`;

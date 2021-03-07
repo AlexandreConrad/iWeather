@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Image, StyleSheet, View} from "react-native"
 import {Layout, Text} from "@ui-kitten/components";
 import {getMeteoIcon} from "../../api/WeatherMap";
 import {toHours} from "../../util/date";
+import {Grid, LineChart} from "react-native-svg-charts";
 
 const DetailMeteoHeure = ({hourly}) => {
+
+
+    const getData = () => {
+        const data = [];
+        for(let i = 0; i < 5; i++) {
+            data.push(hourly[i].temp)
+        }
+
+        return data
+    };
 
     return <Layout level={"2"}>
 
@@ -15,6 +26,13 @@ const DetailMeteoHeure = ({hourly}) => {
                 <Text>{Math.floor(hourly[index].temp)}°C</Text>
             </View>)}
         </View>
+
+        <LineChart
+            style={{height: 50}}
+            data={getData()}
+            svg={{stroke: 'rgb(134, 65, 244)'}}
+        />
+
 
     </Layout>
 };

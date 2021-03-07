@@ -3,8 +3,27 @@ import {Image, StyleSheet, View} from "react-native"
 import {Layout, Text} from "@ui-kitten/components";
 import {toDay} from "../../util/date";
 import {getMeteoIcon} from "../../api/WeatherMap";
+import {LineChart} from "react-native-svg-charts";
 
 const DetailMeteoSemaine = ({daily}) => {
+
+
+    const getTempMin = () => {
+        const data = [];
+        daily.forEach(jour => {
+            data.push(jour.temp.min);
+        });
+
+        return data
+    };
+    const getTempMax = () => {
+        const data = [];
+        daily.forEach(jour => {
+            data.push(jour.temp.max);
+        });
+
+        return data
+    };
 
     return <Layout level={"2"}>
         <View style={styles.row}>
@@ -16,6 +35,18 @@ const DetailMeteoSemaine = ({daily}) => {
                 </View>
             )}
         </View>
+
+        <LineChart
+            style={{height: 50}}
+            data={getTempMax()}
+            svg={{stroke: 'rgb(134, 65, 244)'}}
+        />
+
+        <LineChart
+            style={{height: 50}}
+            data={getTempMin()}
+            svg={{stroke: 'rgb(134, 65, 244)'}}
+        />
 
     </Layout>
 };
