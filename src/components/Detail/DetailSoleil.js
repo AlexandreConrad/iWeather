@@ -9,14 +9,16 @@ const DetailSoleil = ({current}) => {
     const sunrise = new Date(current.sunrise * 1000);
     const sunset = new Date(current.sunset * 1000);
 
-    let percent = 0;
+    let percent;
 
     if (actual > sunset) {
         percent = 100
     } else if (actual < sunrise) {
         percent = 0
     } else {
-        percent = Math.floor((sunrise.getTime() / actual.getTime()) * 100)
+        const diffSunsetToActual = sunset.getTime() - actual.getTime();
+        const diffSunsetToSunrise = sunset.getTime() - sunrise.getTime();
+        percent = Math.floor((diffSunsetToActual / diffSunsetToSunrise) * 100)
     }
 
     return <Layout level={"2"} style={styles.container}>
