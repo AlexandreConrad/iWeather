@@ -7,18 +7,18 @@ import {Grid, LineChart} from "react-native-svg-charts";
 
 const DetailMeteoHeure = ({hourly}) => {
 
-
+    /**
+     * Récupération de la température des 5 prochaines heures
+     */
     const getData = () => {
         const data = [];
         for(let i = 0; i < 5; i++) {
             data.push(hourly[i].temp)
         }
-
         return data
     };
 
     return <Layout level={"2"}>
-
         <View style={styles.row}>
             {[1, 2, 3, 4, 5].map(index => <View key={index} style={styles.column}>
                 <Text>{toHours(new Date(hourly[index].dt * 1000))}H</Text>
@@ -32,7 +32,6 @@ const DetailMeteoHeure = ({hourly}) => {
             data={getData()}
             svg={{stroke: 'rgb(134, 65, 244)'}}
         />
-
 
     </Layout>
 };

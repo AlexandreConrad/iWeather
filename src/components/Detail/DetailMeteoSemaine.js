@@ -5,17 +5,25 @@ import {toDay} from "../../util/date";
 import {getMeteoIcon} from "../../api/WeatherMap";
 import {LineChart} from "react-native-svg-charts";
 
+/**
+ *  Graphique de la météo de la semaine
+ * **/
 const DetailMeteoSemaine = ({daily}) => {
 
-
+    /**
+     * Récupération de toutes les températures minimales de la semaine
+     */
     const getTempMin = () => {
         const data = [];
         daily.forEach(jour => {
             data.push(jour.temp.min);
         });
-
         return data
     };
+
+    /**
+     * Récupération des températures maximales de la semaine
+     */
     const getTempMax = () => {
         const data = [];
         daily.forEach(jour => {

@@ -2,6 +2,9 @@ import React from "react"
 import {Layout, Text} from "@ui-kitten/components";
 import {StyleSheet, View} from "react-native";
 
+/**
+ * Informations de la météo du jour
+ */
 const DetailInformation = ({current}) => {
     return <Layout level={"2"}>
         <View style={styles.row}>

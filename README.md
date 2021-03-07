@@ -46,7 +46,7 @@ Ajouter une configuration pour lancer l'application :
     3) NPM
     4) package.json : mettre le chemin d'acccès
     5) Command : start
-    6) Environnement : weatherKey=APIKEY
+    6) Environnement : weatherKey=APIKEY , nasaKey=APIKEY et actuKey=APIKEY
     
 * [Image](https://github.com/AlexandreConrad/iWeather/tree/main/docs/ConfigurationEnvironnnement.PNG) - Image d'exemple de configuration
 

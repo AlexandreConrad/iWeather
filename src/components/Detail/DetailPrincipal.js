@@ -4,8 +4,10 @@ import {getMeteoIcon} from "../../api/WeatherMap";
 import {Layout, Text} from "@ui-kitten/components";
 import {toHoursMinute} from "../../util/date";
 
+/**
+ * Premier bloc de la page en détails
+ */
 const DetailPrincipal = ({name, current, daily}) => {
-
 
     return <Layout style={styles.row} level={"2"}>
         <View style={styles.column}>

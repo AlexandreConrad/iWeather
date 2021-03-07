@@ -6,13 +6,21 @@ import MeteoCard from "../MeteoCard";
 import Header from "../Header";
 import * as Location from 'expo-location'
 
+/**
+ * Page de recherche
+ */
+
 const RecherchePage = props => {
+
+    /** Constantes de la page **/
     const [city, setCity] = useState("");
     const [stateCode, setStateCode] = useState("");
     const [country, setCountry] = useState("");
-
     const [recherches, setRecherches] = useState([]);
 
+    /**
+     * Appeler au chargement de la page si les dépendances ont été changées
+     **/
     useEffect(() => {
         if (city !== "" || stateCode !== "" || country !== "")
             weatherSearchByCity(city, stateCode, country).then(result => {
@@ -22,14 +30,17 @@ const RecherchePage = props => {
                     setRecherches([])
                 }
             })
-
     }, [city, stateCode, country]);
 
+    /**
+     * Permet la géolocalisation
+     **/
     const getLocation = () => {
         (async () => {
+            // Demande d'accès à la localisation
             let {status} = await Location.requestPermissionsAsync();
-
             if (status === "granted") {
+                //Récupération de la position
                 Location.getCurrentPositionAsync({}).then(result => {
                     console.log(result);
                     setCity(result.city);
@@ -40,7 +51,10 @@ const RecherchePage = props => {
     };
 
     return <Layout style={styles.container}>
+
+        {/** Bandeau du nom de l'application **/}
         <Header/>
+
         {/** Zone de saisie de recherche **/}
         <Layout>
             <View style={styles.row}>
@@ -72,7 +86,7 @@ const RecherchePage = props => {
             </View>
         </Layout>
 
-        {/** Zone de recherche **/}
+        {/** Liste des propositions **/}
         <Layout style={styles.search} level={"2"}>
             <List
                 style={{margin: 10}}

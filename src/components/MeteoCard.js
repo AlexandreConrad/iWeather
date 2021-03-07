@@ -4,8 +4,13 @@ import {Image, StyleSheet, View} from "react-native";
 import {SCREEN_DETAIL} from "../definitions/ScreenName";
 import {getMeteoIcon} from "../api/WeatherMap";
 
+/**
+ * Carte d'une ville
+ * Commun à FavorisPage et RecherchePage
+ */
 const MeteoCard = ({item, navigation}) => {
 
+    /** Déconstruction de l'objet item **/
     const {main, sys, name} = item;
     const weather = item.weather[0];
 

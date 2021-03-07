@@ -3,19 +3,23 @@ import {Layout, Text} from "@ui-kitten/components";
 import {StyleSheet, View} from "react-native";
 import {toHoursMinute} from "../../util/date";
 
+/**
+ * Progress bar du soleil
+ */
 const DetailSoleil = ({current}) => {
 
+    /** Variables **/
     const actual = new Date();
     const sunrise = new Date(current.sunrise * 1000);
     const sunset = new Date(current.sunset * 1000);
-
     let percent;
 
+    /** Progress bar à 100% car fin de journée **/
     if (actual > sunset) {
         percent = 100
-    } else if (actual < sunrise) {
+    } else if (actual < sunrise) { /** Avant le lever du jour **/
         percent = 0
-    } else {
+    } else { /** Calcul du pourcentage **/
         const diffSunsetToActual = sunset.getTime() - actual.getTime();
         const diffSunsetToSunrise = sunset.getTime() - sunrise.getTime();
         percent = Math.floor((diffSunsetToActual / diffSunsetToSunrise) * 100)

@@ -12,12 +12,16 @@ import {connect} from "react-redux";
 import {addToFavorite, removeToFavorite} from "../../reduxStore/actions/favorite";
 
 const DetailPage = ({route, navigation, favorite, addToFavorite, removeToFavorite}) => {
-    const research = route.params.research;
-    const isInFavorite = favorite.indexOf(research.id) !== -1;
 
+    /** Constantes **/
+    const research = route.params.research; // Récupération de notre item
+    const isInFavorite = favorite.indexOf(research.id) !== -1; // Vérification s'il fait partis des favoris
     const [result, setResult] = useState({});
     const {current, daily, hourly} = result;
 
+    /**
+     * Récupération des détails de toute la page
+     */
     useEffect(() => {
         weatherDetailCity(research.coord.lat, research.coord.lon).then(result => {
             setResult(result.data)
@@ -32,13 +36,19 @@ const DetailPage = ({route, navigation, favorite, addToFavorite, removeToFavorit
         removeToFavorite(research.id)
     };
 
+    /**
+     * Permet de mettre en attente l'affichage si le call API n'est pas fini
+     */
     if (!current) {
         return <Layout/>
     }
 
     return <Layout style={styles.container}>
+
+        {/** Navigation envoyée au header pour le retour **/}
         <Header navigation={navigation}/>
 
+        {/** Gestion du bouton favoris **/}
         {!isInFavorite && <Button onPressIn={handleAddToFavorite}>Ajouter aux favoris</Button>}
         {isInFavorite && <Button onPressIn={handleRemoveToFavorite}>Supprimer des favoris</Button>}
 
@@ -65,6 +75,10 @@ const mapStateToProps = state => {
     }
 };
 
+/**
+ * Dispatch permet la rechercher dans le reducer.
+ * addToFavorite est remplacé par actions
+ */
 const mapDispatchToProps = dispatch => {
     return {
         addToFavorite: cityId => dispatch(addToFavorite(cityId)),

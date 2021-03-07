@@ -7,7 +7,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import Application from "./src/Application";
 
 const App = () => {
-
+    {/**  Page principale **/}
     return <>
         <IconRegistry icons={[EvaIconsPack]}/>
         <Provider store={Storage}>

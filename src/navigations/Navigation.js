@@ -9,8 +9,16 @@ import RecherchePage from "../components/Recherche/RecherchePage";
 import FavorisPage from "../components/Favoris/FavorisPage";
 import ActivitePage from "../components/Activite/ActivitePage";
 
+/**
+ * Compomenent qui enregistre les écrans de l'application
+ */
+
 const {Navigator, Screen} = createBottomTabNavigator();
 
+/**
+ * Premier composant appelé
+ * Permet d'enregistrer tous nos écrans de l'application
+ */
 const NavigatorApplication = () => (
     <NavigationContainer>
         <Navigator tabBar={props => <BottomTabBar {...props}/>}>
@@ -22,6 +30,9 @@ const NavigatorApplication = () => (
     </NavigationContainer>
 );
 
+/**
+ * Menu de navigation en bas de l'application
+ */
 const BottomTabBar = ({navigation, state}) => (
     <BottomNavigation
         selectedIndex={state.index}

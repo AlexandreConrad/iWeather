@@ -19,18 +19,31 @@ async function callWeatherMapAPI(endpoint) {
         })
 }
 
+/**
+ * Récupération des images de la météo
+ * @param code météo
+ */
 export const getMeteoIcon = code => {
     return "http://openweathermap.org/img/wn/" + code + "@2x.png"
 };
 
+/**
+ * Permet de faire la recherche en rapport avec le nom, code ou pays
+ */
 export async function weatherSearchByCity(cityName, stateCode, country) {
     return await callWeatherMapAPI(`/find?q=${cityName},${stateCode},${country}`)
 }
 
+/**
+ * Permet de faire une recherche par rapport à l'identifiant de la ville
+ */
 export async function weatherSerarchByCityId(cityId) {
     return await callWeatherMapAPI(`/weather?id=${cityId}`)
 }
 
+/**
+ * Permet de récupérer toutes les informations en détail d'une ville
+ */
 export async function weatherDetailCity(lat, lon) {
     return await callWeatherMapAPI(`/onecall?lat=${lat}&lon=${lon}`)
 }

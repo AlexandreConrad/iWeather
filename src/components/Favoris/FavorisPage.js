@@ -8,8 +8,12 @@ import Header from "../Header";
 
 const FavorisPage = ({navigation, favorite}) => {
 
+    /** Listes des recherches API pour les favoris **/
     const [recherches, setRecherches] = useState([]);
 
+    /**
+     * Récupération des villes en favoris avec l'id
+     */
     useEffect(() => {
         setRecherches([]);
         favorite.forEach(fav => {
@@ -20,9 +24,11 @@ const FavorisPage = ({navigation, favorite}) => {
     }, [favorite]);
 
     return <Layout style={styles.container}>
+
+        {/** Header avec la flèches de retour */}
         <Header navigation={navigation}/>
 
-        {/**Search card*/}
+        {/** Liste des villes favoris */}
         <Layout style={styles.search} level={"2"}>
             <List
                 style={{margin: 10}}
@@ -42,6 +48,10 @@ const styles = StyleSheet.create({
     }
 });
 
+/**
+ * Récupération des favoris par redux (reducers)
+ * Mise à disposition des ids des villes favorites dans un tableau dans le props
+ */
 const mapStateToProps = state => {
     return {
         favorite: state.favorite

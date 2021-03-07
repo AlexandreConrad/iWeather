@@ -29,7 +29,9 @@ const Header = props => {
         setLight(!light)
     };
 
-    /** Affichage **/
+    /** Affichage
+     *  // Gestion du bouton retour à l'aide de la navigation, si la props navigations est présent, on affiche un retour
+     * **/
     return <Layout>
         <TopNavigation
             title={<Text category={"h4"}>iWeather</Text>}
@@ -43,7 +45,6 @@ const Header = props => {
 /**
  * Fonction qui permet d'ajouter à notre props le darkMode selectionné avant
  * @param state (State de redux)
- * @returns {{light: *}}
  */
 const mapStateToProps = state => {
     return {
@@ -54,7 +55,6 @@ const mapStateToProps = state => {
 /**
  * Fonction qui permet de changer le darkMode dans le redux
  * @param dispatch
- * @returns {{setLight: (function(*=): *)}}
  */
 const mapDispatchToProps = dispatch => {
     return {
