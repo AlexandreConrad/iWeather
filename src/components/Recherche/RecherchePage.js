@@ -4,6 +4,7 @@ import {Button, Input, Layout, List} from "@ui-kitten/components";
 import {weatherSearchByCity} from "../../api/WeatherMap";
 import MeteoCard from "../MeteoCard";
 import Header from "../Header";
+import * as Location from 'expo-location'
 
 const RecherchePage = props => {
     const [city, setCity] = useState("");
@@ -24,9 +25,23 @@ const RecherchePage = props => {
 
     }, [city, stateCode, country]);
 
+    const getLocation = () => {
+        (async () => {
+            let {status} = await Location.requestPermissionsAsync();
+
+            if (status === "granted") {
+                Location.getCurrentPositionAsync({}).then(result => {
+                    console.log(result);
+                    setCity(result.city);
+                    setStateCode(result.postalCode);
+                });
+            }
+        })()
+    };
+
     return <Layout style={styles.container}>
         <Header/>
-        {/** Zone de saisie de recherche */}
+        {/** Zone de saisie de recherche **/}
         <Layout>
             <View style={styles.row}>
                 <Input
@@ -51,13 +66,13 @@ const RecherchePage = props => {
                 />
             </View>
             <View style={styles.row}>
-                <Button style={styles.input}>
-                    Rechercher
+                <Button style={styles.input} onPressIn={getLocation}>
+                    Me géolocaliser
                 </Button>
             </View>
         </Layout>
 
-        {/** Zone de recherche */}
+        {/** Zone de recherche **/}
         <Layout style={styles.search} level={"2"}>
             <List
                 style={{margin: 10}}
