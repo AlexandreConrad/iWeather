@@ -4,7 +4,11 @@ import {StyleSheet, View} from "react-native";
 import Header from "../Header";
 import {SCREEN_ACTUALITES, SCREEN_MARS} from "../../definitions/ScreenName";
 
-
+/**
+ * Gestion des activités possibles
+ * Page des fonctionnalités supplémentaires
+ * @param navigation
+ */
 const ActivitePage = ({navigation}) => {
 
     return <Layout style={styles.container} >
@@ -13,12 +17,16 @@ const ActivitePage = ({navigation}) => {
         <Header/>
 
         <Layout style={styles.select}>
+
+            {/** Gestions des actualités **/}
             <View>
                 <Text>Liste des actualités en France</Text>
                 <Button onPressIn={() => navigation.navigate(SCREEN_ACTUALITES)} style={styles.input}> Actualités </Button>
             </View>
+
+            {/** Gestions de la météo sur Mars **/}
             <View>
-                <Text>Température sur Mars</Text>
+                <Text>Météo sur Mars</Text>
                 <Button onPressIn={() => navigation.navigate(SCREEN_MARS)} style={styles.input}> Mars </Button>
             </View>
 
@@ -38,7 +46,7 @@ const styles = StyleSheet.create({
     },
     input: {
         marginTop : 20,
-        marginBottom :20,
+        marginBottom :60,
     },
 });
 

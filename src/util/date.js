@@ -15,3 +15,8 @@ export const toHours = date => {
 export const toDay = date => {
     return moment(date).locale("fr").format("dddd")
 };
+
+/** Retourne mois / jour et année **/
+export const toMonthDayYears = date => {
+    return moment(date).locale("fr").format("MMM Do YY")
+};

@@ -75,6 +75,8 @@ Liste les programmes/logiciels/ressources que nous avons utilisé pour développ
 * [Axios](https://www.npmjs.com/package/axios) - API
 * [Redux](https://www.npmjs.com/package/redux) - Stockage
 * [Amcharts](https://www.amcharts.com/demos/) - Animation graphique et icons
+* [Moments](https://momentjs.com/) - Utilisation pour les dates
+
 
 Pipline d'intégration avec :
 
