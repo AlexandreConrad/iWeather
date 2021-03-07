@@ -2,7 +2,7 @@ import {combineReducers, createStore} from 'redux';
 import {persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import favObjectsReducer from './reducers/favoriteCity';
+import favorite from './reducers/favorite';
 import system from "./reducers/system"
 
 const configPersist = {
@@ -13,7 +13,7 @@ const configPersist = {
 const reducerPersist = persistReducer(
     configPersist,
     combineReducers({
-        favObjectsReducer,
+        favorite,
         system
     })
 );

@@ -1,10 +1,11 @@
 import {Card, Text} from "@ui-kitten/components";
 import React from "react";
 import {Image, StyleSheet, View} from "react-native";
-import {SCREEN_DETAIL} from "../../definitions/ScreenName";
-import {getMeteoIcon} from "../../api/WeatherMap";
+import {SCREEN_DETAIL} from "../definitions/ScreenName";
+import {getMeteoIcon} from "../api/WeatherMap";
 
-const RechercheCard = ({item, navigation}) => {
+const MeteoCard = ({item, navigation}) => {
+
     const {main, sys, name} = item;
     const weather = item.weather[0];
 
@@ -50,4 +51,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default RechercheCard
+export default MeteoCard

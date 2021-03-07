@@ -28,6 +28,10 @@ export async function weatherSearchByCity(cityName, stateCode, country) {
     return await callWeatherMapAPI(`/find?q=${cityName},${stateCode},${country}`)
 }
 
+export async function weatherSerarchByCityId(cityId) {
+    return await callWeatherMapAPI(`/weather?id=${cityId}`)
+}
+
 export async function weatherDetailCity(lat, lon) {
     return await callWeatherMapAPI(`/onecall?lat=${lat}&lon=${lon}`)
 }

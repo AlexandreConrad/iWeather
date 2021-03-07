@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import {StyleSheet, View} from 'react-native';
 import {Button, Input, Layout, List} from "@ui-kitten/components";
 import {weatherSearchByCity} from "../../api/WeatherMap";
-import RechercheCard from "./RechercheCard";
+import MeteoCard from "../MeteoCard";
 import Header from "../Header";
 
 const RecherchePage = props => {
@@ -62,7 +62,7 @@ const RecherchePage = props => {
             <List
                 style={{margin: 10}}
                 data={recherches}
-                renderItem={render => <RechercheCard item={render.item} navigation={props.navigation}/>}
+                renderItem={render => <MeteoCard item={render.item} navigation={props.navigation}/>}
             />
         </Layout>
     </Layout>
