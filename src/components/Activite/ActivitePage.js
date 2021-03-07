@@ -1,35 +1,45 @@
 import React from "react"
-import {Layout} from "@ui-kitten/components";
-import {StyleSheet} from "react-native";
-import {Grid, LineChart} from 'react-native-svg-charts'
+import {Button, Layout,Text} from "@ui-kitten/components";
+import {StyleSheet, View} from "react-native";
+import Header from "../Header";
+import {SCREEN_ACTUALITES, SCREEN_MARS} from "../../definitions/ScreenName";
 
 
-const ActivitePage = () => {
+const ActivitePage = ({navigation}) => {
 
+    return <Layout style={styles.container} >
 
-    return <Layout styles={styles.container}>
+        {/** Bandeau du nom de l'application **/}
+        <Header/>
+
+        <Layout style={styles.select}>
+            <View>
+                <Text>Liste des actualités en France</Text>
+                <Button onPressIn={() => navigation.navigate(SCREEN_ACTUALITES)} style={styles.input}> Actualités </Button>
+            </View>
+            <View>
+                <Text>Température sur Mars</Text>
+                <Button onPressIn={() => navigation.navigate(SCREEN_MARS)} style={styles.input}> Mars </Button>
+            </View>
+
+        </Layout>
+
     </Layout>
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
-    row: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center"
+    select:{
+        flexDirection: "column",
+        marginTop: "50%",
+        margin : 30,
     },
     input: {
-        margin: 20,
-        marginTop: 10,
-        marginBottom: 10,
-        flex: 1
+        marginTop : 20,
+        marginBottom :20,
     },
-    search: {
-        marginTop: 20,
-        flex: 1
-    }
 });
 
 export default ActivitePage
