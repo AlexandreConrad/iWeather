@@ -2,12 +2,21 @@ import React from "react";
 import {View, StyleSheet} from "react-native";
 import {Text} from "@ui-kitten/components";
 
+/**
+ * Carte de Mars
+ */
 export default class CardMars extends React.Component {
 
+    /**
+     * Constructeur
+     */
     constructor(props) {
         super(props);
     }
 
+    /**
+     * Vue de l'application
+     */
     render() {
         return (<View style={{flexDirection: 'row', alignItems: 'center', justifyContent:'space-between'}}>
             <View style={{padding: 5}}>

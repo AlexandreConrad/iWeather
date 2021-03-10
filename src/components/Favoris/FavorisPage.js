@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {StyleSheet} from "react-native"
 import connect from "react-redux/lib/connect/connect";
-import {Layout, List} from "@ui-kitten/components";
+import {Layout, List, Text} from "@ui-kitten/components";
 import MeteoCard from "../MeteoCard";
 import {weatherSerarchByCityId} from "../../api/WeatherMap";
 import Header from "../Header";
+import AnimatedView from "../Animations/AnimatedView";
 
 const FavorisPage = ({navigation, favorite}) => {
 
@@ -15,26 +16,37 @@ const FavorisPage = ({navigation, favorite}) => {
      * Récupération des villes en favoris avec l'id
      */
     useEffect(() => {
-        setRecherches([]);
-        favorite.forEach(fav => {
-            weatherSerarchByCityId(fav).then(result => {
-                setRecherches([...recherches, result.data])
-            })
-        })
+        const temp = []
+        if (favorite.length === 0) {
+            setRecherches([])
+        } else {
+            for (let fav of favorite) {
+                weatherSerarchByCityId(fav).then(({data}) => {
+                    temp.push(data)
+                    setRecherches(temp)
+                });
+            }
+        }
     }, [favorite]);
 
     return <Layout style={styles.container}>
 
         {/** Header avec la flèches de retour */}
-        <Header navigation={navigation}/>
+        <Header title={'iWeather'}/>
 
         {/** Liste des villes favoris */}
-        <Layout level={"2"}>
+        <Layout level={'2'} style={{flex: 1}}>
+            {recherches.length > 0 &&
             <List
-                style={{margin: 10}}
+                style={{margin: 15}}
                 data={recherches}
-                renderItem={render => <MeteoCard item={render.item} navigation={navigation}/>}
-            />
+                renderItem={({item, index}) =>
+                    <AnimatedView delay={index * 50} key={new Date()}>
+                        <MeteoCard item={item} navigation={navigation}/>
+                    </AnimatedView>}
+            />}
+            {recherches.length === 0 &&
+            <Text style={{textAlign: 'center', marginTop: 15}}>Commencez par ajouter une ville</Text>}
         </Layout>
     </Layout>
 };

@@ -1,13 +1,13 @@
-import {Card, Text} from "@ui-kitten/components";
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, View, Linking} from "react-native";
+import {Card, Text} from "@ui-kitten/components";
 
 /**
  * Carte sur les actualités en france
  */
-const CardActu = ({item}) => {
+const CardNews = ({item}) => {
 
-    return <Card style={styles.card}>
+    return <Card style={styles.card} onPress={()=> Linking.openURL(item.url)}>
         <View style={styles.container}>
 
             <View style={styles.containerTop}>
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default CardActu
+export default CardNews

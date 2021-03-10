@@ -1,6 +1,6 @@
-import {Card, Text} from "@ui-kitten/components";
 import React from "react";
 import {Image, StyleSheet, View} from "react-native";
+import {Card, Text} from "@ui-kitten/components";
 import {SCREEN_DETAIL} from "../definitions/ScreenName";
 import {getMeteoIcon} from "../api/WeatherMap";
 
@@ -14,7 +14,7 @@ const MeteoCard = ({item, navigation}) => {
     const {main, sys, name} = item;
     const weather = item.weather[0];
 
-    return <Card style={styles.card} onPressIn={() => navigation.navigate(SCREEN_DETAIL, {research: item})}>
+    return <Card style={styles.card} onPress={() => navigation.navigate(SCREEN_DETAIL, {research: item})}>
         <View style={styles.container}>
             <View style={styles.containerRight}>
                 <Image

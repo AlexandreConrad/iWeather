@@ -1,24 +1,38 @@
 # iWeather
 
-_Badges :_
-#A FAIRE#
-
 Projet de développement mobile réalisé par Monsieur Nicolas Fournier pour les Master 2 Génie informatique 2020/2021.
 Le projet consiste à réaliser une application utilisant les principaux éléments du développement mobile avec React Native.
 Le programme doit respecter certaines spécificités techniques.
 
 ### Spécificités
 
-- Page de recherche du lieu
+- Page de recherche du lieu / Localisation
 - Page de météo
 - Page de localisation 
 - Page de favories
 
 ### Spécificités supplémentaires
 
- #A FAIRE#
- #A FAIRE#
+ ##### 1) Météo Extraplanétaire
  
+ API de la NASA qui permet d'avoir des informations, mesures et météo sur mars à l'aide de rovers.
+- [NasaAPI](https://api.nasa.gov/#signUp) - API de la NSASA
+
+ ##### 2) Actualités dans le monde
+ 
+ API qui permet d'avoir les actualités dans le monde.
+- [MediaStackAPI](https://mediastack.com/documentation) - API de mediastack
+
+ ##### 3) Changement mode sombre
+
+Permet à l'utilisateur de changer pour le monde sombre de l'application.
+
+### Spécificités supplémentaires a réalisé par la suite
+
+- Voir les constellations visibles la nuit
+- Niveau de pollution dans la ville
+- Activité à proposé par rapport à la météo (ex : tripadvisor )
+
 ### Rendu
 
 - Git / APK pour le 11 / 03 / 2021
@@ -75,20 +89,27 @@ Liste les programmes/logiciels/ressources que nous avons utilisé pour développ
 * [Axios](https://www.npmjs.com/package/axios) - API
 * [Redux](https://www.npmjs.com/package/redux) - Stockage
 * [Amcharts](https://www.amcharts.com/demos/) - Animation graphique et icons
-* [Moments](https://momentjs.com/) - Utilisation pour les dates
-
-
-Pipline d'intégration avec :
-
-* [Jenkins](#) - Build / Compile / Package  #A FAIRE#
-* [SonarQube](#) - Notation du code  #A FAIRE#
+* [Moments](https://momentjs.com/) - Utilisation pour les dates 
+* [OpenWeatherMap](https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2) - Liste des icons
+* [ReactNativeChartsWrapper](https://github.com/wuxudong/react-native-charts-wrapper) - Graphiques
+* [ReactNativeSvgCharts](https://github.com/JesperLekland/react-native-svg-charts) - Graphiques
 
 ## Documentation
 
 * [Github](https://github.com/FournierNico/2020_2021_CoursDevMobile) - Cours de Monsieur Nicolas Fournier
-* [Github](#) - Sujet du projet #A FAIRE#
-* [Carnet de bord](#) - Carnet de bord  #A FAIRE#
-* [Gantt](#) - Diagramme de Gantt  #A FAIRE#
+* [Github](https://github.com/AlexandreConrad/iWeather/blob/main/docs/Mobile_projet_-_MGI_-_2020-2021.pdf) - Sujet du projet
+* [Carnet de bord](https://github.com/AlexandreConrad/iWeather/commits/main) - Développement de l'application
+
+## API
+
+* [OpenWeatherMap](https://openweathermap.org/) 
+* [NasaAPI](https://api.nasa.gov/#signUp) - API de la NSASA
+* [MediaStackAPI](https://mediastack.com/documentation) - API de mediastack
+* [GeoCoding](https://developers.google.com/maps/documentation/geocoding/overview) - API de géolocalisation
+
+## APK
+
+La commande est : expo build:android
 
 ## Versions
 
