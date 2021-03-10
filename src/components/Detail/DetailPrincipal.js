@@ -2,27 +2,25 @@ import React from "react";
 import {Image, StyleSheet, View} from "react-native"
 import {getMeteoIcon} from "../../api/WeatherMap";
 import {Layout, Text} from "@ui-kitten/components";
-import {toHoursMinute} from "../../util/date";
 
 /**
  * Premier bloc de la page en détails
  */
-const DetailPrincipal = ({name, current, daily}) => {
+const DetailPrincipal = ({current, daily}) => {
 
-    return <Layout style={styles.row} level={"2"}>
-        <View style={styles.column}>
+    return <Layout level={"2"}>
+        <View style={{flexDirection: 'column'}}>
             <View style={styles.row}>
                 <Image style={styles.image} source={{uri: getMeteoIcon(current.weather[0].icon)}}/>
-                <Text style={{paddingRight: 30}}>{name}</Text>
+                <Text style={{fontSize: 38}}>{Math.floor(current.temp)}°</Text>
             </View>
-            <View style={styles.row}>
-                <Text>{current.weather[0].description}</Text>
+            <View style={styles.informations}>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={{fontSize: 16}}>Min. {Math.floor(daily[0].temp.min)}°</Text>
+                    <Text style={{marginHorizontal: 7.5, fontSize: 16}}>|</Text>
+                    <Text style={{fontSize: 16}}>Max. {Math.floor(daily[0].temp.max)}°</Text>
+                </View>
             </View>
-        </View>
-        <View style={styles.column}>
-            <Text>{Math.floor(current.temp)}°C</Text>
-            <Text>{toHoursMinute(new Date())}</Text>
-            <Text>min : {Math.floor(daily[0].temp.min)}°C max : {Math.floor(daily[0].temp.max)}°C</Text>
         </View>
     </Layout>
 };
@@ -32,20 +30,24 @@ const styles = StyleSheet.create({
         flex: 1
     },
     row: {
-        paddingTop: 5,
-        paddingBottom: 5,
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-        alignItems: "center",
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     column: {
-        flexDirection: "column",
-        justifyContent: "space-around",
-        alignItems: "center"
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
     },
     image: {
-        height: 40,
-        width: 40
+        height: 80,
+        width: 80,
+    },
+    informations: {
+        flexDirection: 'column',
+        alignItems:'center',
+        justifyContent:'center',
+        marginTop: -15,
     }
 });
 

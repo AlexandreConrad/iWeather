@@ -10,7 +10,11 @@ import DetailSoleil from "./DetailSoleil";
 import DetailMeteoSemaine from "./DetailMeteoSemaine";
 import {connect} from "react-redux";
 import {addToFavorite, removeToFavorite} from "../../reduxStore/actions/favorite";
+import {HeartFillIcon, HeartOutlineIcon} from '../../definitions/Icons';
 
+/**
+ * Page de détails d'une ville
+ */
 const DetailPage = ({route, navigation, favorite, addToFavorite, removeToFavorite}) => {
 
     /** Constantes **/
@@ -43,20 +47,36 @@ const DetailPage = ({route, navigation, favorite, addToFavorite, removeToFavorit
         return <Layout/>
     }
 
-    return <Layout style={styles.container}>
+    return <Layout style={styles.container} level={"2"}>
 
         {/** Navigation envoyée au header pour le retour **/}
-        <Header navigation={navigation}/>
+        <Header title={research.name} navigation={navigation}/>
 
-        {/** Gestion du bouton favoris **/}
-        {!isInFavorite && <Button onPressIn={handleAddToFavorite}>Ajouter aux favoris</Button>}
-        {isInFavorite && <Button onPressIn={handleRemoveToFavorite}>Supprimer des favoris</Button>}
+        <View style={styles.header}>
+            <DetailPrincipal current={current} daily={daily}/>
+            <View style={{justifyContent: 'center'}}>
+                {!isInFavorite && <Button accessoryLeft={HeartOutlineIcon} size={'giant'} appearance='ghost'
+                                          onPressIn={handleAddToFavorite}>Ajouter</Button>}
+                {isInFavorite && <Button accessoryLeft={HeartFillIcon} size={'giant'} appearance='ghost'
+                                         onPressIn={handleRemoveToFavorite}>Retirer</Button>}
+            </View>
+        </View>
 
-        <DetailPrincipal name={research.name} current={current} daily={daily}/>
-        <DetailMeteoHeure hourly={hourly}/>
-        <DetailInformation current={current}/>
-        <DetailSoleil current={current}/>
-        <DetailMeteoSemaine daily={daily}/>
+        <View style={styles.module}>
+            <DetailMeteoHeure hourly={hourly}/>
+        </View>
+
+        <View style={styles.module}>
+            <DetailInformation current={current}/>
+        </View>
+
+        <View style={styles.module}>
+            <DetailSoleil current={current}/>
+        </View>
+
+        <View style={styles.module}>
+            <DetailMeteoSemaine daily={daily}/>
+        </View>
     </Layout>
 };
 
@@ -66,6 +86,14 @@ const styles = StyleSheet.create({
     },
     space: {
         marginTop: 20
+    },
+    header: {
+        marginBottom: 15,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    module: {
+        marginBottom: 15,
     }
 });
 

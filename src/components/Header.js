@@ -1,8 +1,6 @@
 import React from "react";
-
 import {Layout, Text, TopNavigation, TopNavigationAction} from "@ui-kitten/components";
 import {BackIcon,MoonIcon, SunIcon} from "../definitions/Icons";
-
 import {connect} from "react-redux";
 import {setLight} from "../reduxStore/actions/system";
 
@@ -34,7 +32,7 @@ const Header = props => {
      * **/
     return <Layout>
         <TopNavigation
-            title={<Text category={"h4"}>iWeather</Text>}
+            title={<Text category={"h4"}>{props.title}</Text>}
             alignment={"center"}
             accessoryLeft={navigation ? () => <TopNavigationAction icon={BackIcon} onPressIn={goBack}/> : undefined}
             accessoryRight={() => <TopNavigationAction icon={iconLight} onPressIn={turnLight}/>}

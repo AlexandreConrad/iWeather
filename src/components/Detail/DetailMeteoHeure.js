@@ -1,37 +1,67 @@
-import React, {useEffect, useState} from "react";
-import {Image, StyleSheet, View} from "react-native"
+import React from "react";
+import {Image, StyleSheet, View, ScrollView} from "react-native"
 import {Layout, Text} from "@ui-kitten/components";
 import {getMeteoIcon} from "../../api/WeatherMap";
 import {toHours} from "../../util/date";
-import {Grid, LineChart} from "react-native-svg-charts";
+import {LineChart} from "react-native-svg-charts";
 
+/**
+ * Météo dans les 24 prochaines heures
+ */
 const DetailMeteoHeure = ({hourly}) => {
 
     /**
-     * Récupération de la température des 5 prochaines heures
+     * Récupération de la température des 24 prochaines heures
      */
     const getData = () => {
         const data = [];
-        for(let i = 0; i < 5; i++) {
-            data.push(hourly[i].temp)
+        for (let i = 0; i < 24; i++) {
+            data.push(hourly[i].temp);
         }
-        return data
+        return data;
     };
 
-    return <Layout level={"2"}>
-        <View style={styles.row}>
-            {[1, 2, 3, 4, 5].map(index => <View key={index} style={styles.column}>
-                <Text>{toHours(new Date(hourly[index].dt * 1000))}H</Text>
-                <Image style={styles.image} source={{uri: getMeteoIcon(hourly[index].weather[0].icon)}}/>
-                <Text>{Math.floor(hourly[index].temp)}°C</Text>
-            </View>)}
-        </View>
+    /**
+     * ScrollBar horizontal
+     */
+    const render = () => {
 
-        <LineChart
-            style={{height: 50}}
-            data={getData()}
-            svg={{stroke: 'rgb(134, 65, 244)'}}
-        />
+        //Gestion du CSS Custom
+        let items = [];
+        for (let index = 0; index < 24; index++) {
+            let marginLeft = 0;
+            let marginRight = 7.5;
+            if (index === 0) {
+                marginLeft = 15;
+            } else if (index === 23) {
+                marginRight = 15;
+            }
+
+            /** Retourne la liste des 24 prochaines heures **/
+            items.push(
+                <View key={index} style={{...styles.column, marginLeft: marginLeft, marginRight: marginRight}}>
+                    <Text>{toHours(new Date(hourly[index].dt * 1000))}H</Text>
+                    <Image style={styles.image} source={{uri: getMeteoIcon(hourly[index].weather[0].icon)}}/>
+                    <Text>{Math.floor(hourly[index].temp)}°C</Text>
+                </View>)
+        }
+        return items
+    }
+
+    return <Layout level={"2"}>
+        <ScrollView horizontal={true}>
+            <View>
+                <View style={{...styles.row, zIndex: 2}}>
+                    {render()}
+                </View>
+
+                <LineChart
+                    style={styles.graphiques}
+                    data={getData()}
+                    svg={{stroke: 'rgb(134, 65, 244)'}}
+                />
+            </View>
+        </ScrollView>
 
     </Layout>
 };
@@ -56,6 +86,12 @@ const styles = StyleSheet.create({
     image: {
         height: 40,
         width: 40
+    },
+    graphiques: {
+        height: 50,
+        zIndex: 1,
+        marginTop: -50,
+        opacity: 0.5,
     }
 });
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url_end = `?api_key=${process.env.nasaKey}&feedtype=json&ver=1.0`;
+const url_end = `?api_key=q6jwlnGfbZBUZBeoQJdlmIFXFzmyALvpS7grVkD3&feedtype=json&ver=1.0`;
 const url = `https://api.nasa.gov/`;
 
 const callAPI = axios.create({

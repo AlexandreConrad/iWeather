@@ -1,23 +1,36 @@
 import React from 'react'
-import {Animated} from 'react-native'
+import {Animated, Dimensions} from 'react-native'
 
+/**
+ * Gestions des animations de l'application
+ */
 export default class SpringView extends React.Component {
 
+    /**
+     * Constructeur des animations
+     * @param props
+     */
     constructor(props) {
         super(props);
+        const {width} = Dimensions.get('window'); //Récupération de la largeur de l'écran
         this.state = {
-            pan: new Animated.value({x: 200, y: 0})
+            pan: new Animated.ValueXY({x: width, y: 0}) // Animation sur 2 Dimensions
         }
     }
 
+    /**
+     * Fonction lorsque le composant est installé
+     */
     componentDidMount() {
-        Animated.timing(
-            this.state.pan,
-            {
-                toValue: {x: 0, y: 0},
-                duration: 3000
-            }
-        ).start()
+        Animated.sequence([
+            Animated.delay(this.props.delay), // Animation delay
+            Animated.spring(                  // Animation
+                this.state.pan,
+                {
+                    toValue: {x: 0, y: 0},
+                    useNativeDriver: true
+                })
+        ]).start()
     }
 
     render() {

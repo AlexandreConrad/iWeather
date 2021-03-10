@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const url_end = `&units=metric&lang=fr&appid=${process.env.weatherKey}`;
+const url_end = `&units=metric&lang=fr&appid=7e13473339bde8e01be034edee1f08b2`;
 const url = "https://api.openweathermap.org/data/2.5";
 
 const callAPI = axios.create({

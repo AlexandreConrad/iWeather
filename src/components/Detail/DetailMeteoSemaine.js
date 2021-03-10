@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, View} from "react-native"
+import {Image, StyleSheet, View, ScrollView} from "react-native"
 import {Layout, Text} from "@ui-kitten/components";
 import {toDay} from "../../util/date";
 import {getMeteoIcon} from "../../api/WeatherMap";
@@ -7,7 +7,7 @@ import {LineChart} from "react-native-svg-charts";
 
 /**
  *  Graphique de la météo de la semaine
- * **/
+ **/
 const DetailMeteoSemaine = ({daily}) => {
 
     /**
@@ -15,7 +15,7 @@ const DetailMeteoSemaine = ({daily}) => {
      */
     const getTempMin = () => {
         const data = [];
-        daily.forEach(jour => {
+        daily.slice(1, 6).forEach(jour => {
             data.push(jour.temp.min);
         });
         return data
@@ -26,36 +26,62 @@ const DetailMeteoSemaine = ({daily}) => {
      */
     const getTempMax = () => {
         const data = [];
-        daily.forEach(jour => {
+        daily.slice(1, 6).forEach(jour => {
             data.push(jour.temp.max);
         });
 
         return data
     };
 
+    /**
+     * Retourne la météo des 7 prochains jours
+     */
+    const render = () => {
+
+        //CSS Custom
+        let items = []
+        let index = 0
+        for (let jour of daily.slice(1, 8)) {
+            let marginLeft = 0
+            let marginRight = 10
+            if (index === 0) {
+                marginLeft = 15
+            } else if (index === 6) {
+                marginRight = 15
+            }
+
+            items.push(
+                <View style={{alignItems: "center", marginLeft: marginLeft, marginRight: marginRight}} key={index++}>
+                <Text style={{textTransform: 'uppercase'}}>{toDay(new Date(jour.dt * 1000))}</Text>
+                <Image style={styles.image} source={{uri: getMeteoIcon(jour.weather[0].icon)}}/>
+                <Text>{Math.floor(jour.temp.day)}°C</Text>
+            </View>)
+        }
+        return items
+    }
+
     return <Layout level={"2"}>
-        <View style={styles.row}>
-            {daily.map((jour, index) =>
-                <View style={{alignItems: "center"}} key={index}>
-                    <Text>{toDay(new Date(jour.dt * 1000))}</Text>
-                    <Image style={styles.image} source={{uri: getMeteoIcon(jour.weather[0].icon)}}/>
-                    <Text>{Math.floor(jour.temp.day)}°C</Text>
+        <ScrollView horizontal={true}>
+            <View>
+                <View style={{...styles.row, zIndex: 2}}>
+                    {render()}
                 </View>
-            )}
-        </View>
 
-        <LineChart
-            style={{height: 50}}
-            data={getTempMax()}
-            svg={{stroke: 'rgb(134, 65, 244)'}}
-        />
+                <View style={{marginTop: -50, zIndex: 1, opacity: 0.5}}>
+                    <LineChart
+                        style={{height: 50}}
+                        data={getTempMax()}
+                        svg={{stroke: 'rgb(134, 65, 244)'}}
+                    />
 
-        <LineChart
-            style={{height: 50}}
-            data={getTempMin()}
-            svg={{stroke: 'rgb(134, 65, 244)'}}
-        />
-
+                    <LineChart
+                        style={{height: 50, marginTop: -50}}
+                        data={getTempMin()}
+                        svg={{stroke: 'rgb(134, 65, 244)'}}
+                    />
+                </View>
+            </View>
+        </ScrollView>
     </Layout>
 };
 

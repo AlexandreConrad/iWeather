@@ -8,15 +8,26 @@ import {StyleSheet, View} from "react-native";
 const DetailInformation = ({current}) => {
     return <Layout level={"2"}>
         <View style={styles.row}>
-            <Text category={"h6"}>Informations: </Text>
+            <View style={styles.titles}>
+                <Text style={styles.indicateurs}>Indice UV</Text>
+                <Text style={styles.valeurs}>{current.uvi}</Text>
+            </View>
+
+            <View style={styles.titles}>
+                <Text style={styles.indicateurs}>Ressenti</Text>
+                <Text style={styles.valeurs}>{Math.floor(current.feels_like)} °C</Text>
+            </View>
         </View>
         <View style={styles.row}>
-            <Text>Indice UV : {current.uvi}</Text>
-            <Text>Ressenti : {Math.floor(current.feels_like)}°C</Text>
-        </View>
-        <View style={styles.row}>
-            <Text>Pression : {current.pressure}</Text>
-            <Text>Humidité : {current.humidity}</Text>
+            <View style={styles.titles}>
+                <Text style={styles.indicateurs}>Pression</Text>
+                <Text style={styles.valeurs}>{current.pressure}</Text>
+            </View>
+
+            <View style={styles.titles}>
+                <Text style={styles.indicateurs}>Humidité</Text>
+                <Text style={styles.valeurs}>{current.humidity} %</Text>
+            </View>
         </View>
     </Layout>
 };
@@ -32,7 +43,17 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-evenly",
         alignItems: "center",
-    }
+    },
+    titles: {
+        margin: 7.5,
+    },
+    indicateurs: {
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+    },
+    valeurs: {
+        textAlign: 'center',
+    },
 });
 
 export default DetailInformation

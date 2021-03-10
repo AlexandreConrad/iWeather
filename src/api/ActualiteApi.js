@@ -1,7 +1,7 @@
 import axios from "axios";
 import {resolve} from "react-native-svg/src/lib/resolve";
 
-const url_end = `?access_key=${process.env.actuKey}&countries=fr`;
+const url_end = `?access_key=5e928d3d5e09e600cfca0c0c750c5d32&countries=fr`;
 const url = `http://api.mediastack.com/`;
 
 const callAPI = axios.create({
@@ -24,6 +24,7 @@ async function callActusAPI(endpoint) {
  * Récupération de la météo sur Mars
  */
 export async function actusApi() {
+    //TODO DELETE
     return new Promise((resolve,reject)=>{
         resolve({data:undefined})
     });
