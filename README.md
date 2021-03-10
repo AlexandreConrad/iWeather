@@ -62,7 +62,7 @@ Ajouter une configuration pour lancer l'application :
     5) Command : start
     6) Environnement : weatherKey=APIKEY , nasaKey=APIKEY et actuKey=APIKEY
     
-* [Image](https://github.com/AlexandreConrad/iWeather/tree/main/docs/ConfigurationEnvironnnement.PNG) - Image d'exemple de configuration
+* [Image](https://github.com/AlexandreConrad/iWeather/blob/main/docs/ConfigurationEnvironnement.PNG) - Image d'exemple de configuration
 
 Cette solution permet d'avoir la clé API en local dans son ordinateur et non sur GIT.
 
@@ -110,6 +110,9 @@ Liste les programmes/logiciels/ressources que nous avons utilisé pour développ
 ## APK
 
 La commande est : expo build:android
+
+APK présente dans :
+* [APK](https://github.com/AlexandreConrad/iWeather/blob/main/apk/) - APK de l'application
 
 ## Versions
 

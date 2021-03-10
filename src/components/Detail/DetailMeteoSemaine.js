@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, View, ScrollView} from "react-native"
+import {Image, ScrollView, StyleSheet, View, Dimensions} from "react-native"
 import {Layout, Text} from "@ui-kitten/components";
 import {toDay} from "../../util/date";
 import {getMeteoIcon} from "../../api/WeatherMap";
@@ -52,16 +52,19 @@ const DetailMeteoSemaine = ({daily}) => {
 
             items.push(
                 <View style={{alignItems: "center", marginLeft: marginLeft, marginRight: marginRight}} key={index++}>
-                <Text style={{textTransform: 'uppercase'}}>{toDay(new Date(jour.dt * 1000))}</Text>
-                <Image style={styles.image} source={{uri: getMeteoIcon(jour.weather[0].icon)}}/>
-                <Text>{Math.floor(jour.temp.day)}°C</Text>
-            </View>)
+                    <Text style={{textTransform: 'uppercase'}}>{toDay(new Date(jour.dt * 1000))}</Text>
+                    <Image style={styles.image} source={{uri: getMeteoIcon(jour.weather[0].icon)}}/>
+                    <Text>{Math.floor(jour.temp.day)}°C</Text>
+                </View>)
         }
         return items
     }
 
+    const {width} = Dimensions.get('window');
+    console.log(width);
+
     return <Layout level={"2"}>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} style={{width: width}}>
             <View>
                 <View style={{...styles.row, zIndex: 2}}>
                     {render()}
