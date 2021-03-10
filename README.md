@@ -96,7 +96,6 @@ Liste les programmes/logiciels/ressources que nous avons utilisé pour développ
 
 ## Documentation
 
-<<<<<<< HEAD
 * [Github](https://github.com/FournierNico/2020_2021_CoursDevMobile) - Cours de Monsieur Nicolas Fournier
 * [Github](https://github.com/AlexandreConrad/iWeather/blob/main/docs/Mobile_projet_-_MGI_-_2020-2021.pdf) - Sujet du projet
 * [Carnet de bord](https://github.com/AlexandreConrad/iWeather/commits/main) - Développement de l'application
@@ -111,13 +110,6 @@ Liste les programmes/logiciels/ressources que nous avons utilisé pour développ
 ## APK
 
 La commande est : expo build:android
-=======
-## Documentation
-
-* [Github](https://github.com/FournierNico/2020_2021_CoursDevMobile) - Cours de Monsieur Nicolas Fournier
-* [Github](https://github.com/AlexandreConrad/iWeather/blob/main/docs/Mobile_projet_-_MGI_-_2020-2021.pdf) - Sujet du projet
-* [Carnet de bord](https://github.com/AlexandreConrad/iWeather/commits/main) - Développement de l'application
->>>>>>> 4ede629ec87b955de6ddee230863e88ae25c137e
 
 ## Versions
 
