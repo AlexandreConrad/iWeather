@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "fr.conrad.alexandre.iweather"
     },
     "web": {
       "favicon": "./assets/favicon.png"
