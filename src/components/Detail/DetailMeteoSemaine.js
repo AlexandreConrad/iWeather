@@ -61,11 +61,10 @@ const DetailMeteoSemaine = ({daily}) => {
     }
 
     const {width} = Dimensions.get('window');
-    console.log(width);
 
     return <Layout level={"2"}>
-        <ScrollView horizontal={true} style={{width: width}}>
-            <View>
+        <ScrollView horizontal={true}>
+            <View style={{minWidth: width}}>
                 <View style={{...styles.row, zIndex: 2}}>
                     {render()}
                 </View>

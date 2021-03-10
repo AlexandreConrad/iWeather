@@ -7,7 +7,7 @@ import Header from "../Header";
 import * as Location from 'expo-location'
 import Geocode from "react-geocode";
 import AnimatedView from '../Animations/AnimatedView'
-Geocode.setApiKey(`${process.env.geoKey}`);
+Geocode.setApiKey(`AIzaSyCcCihkFq_XO1uFXI_0f0LA5i9EAByoOjM`);
 
 /**
  * Page de recherche

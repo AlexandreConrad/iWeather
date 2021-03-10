@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {Button, Layout} from "@ui-kitten/components";
 import Header from "../Header";
 import {weatherDetailCity} from "../../api/WeatherMap";
@@ -52,31 +52,33 @@ const DetailPage = ({route, navigation, favorite, addToFavorite, removeToFavorit
         {/** Navigation envoyée au header pour le retour **/}
         <Header title={research.name} navigation={navigation}/>
 
-        <View style={styles.header}>
-            <DetailPrincipal current={current} daily={daily}/>
-            <View style={{justifyContent: 'center'}}>
-                {!isInFavorite && <Button accessoryLeft={HeartOutlineIcon} size={'giant'} appearance='ghost'
-                                          onPressIn={handleAddToFavorite}>Ajouter</Button>}
-                {isInFavorite && <Button accessoryLeft={HeartFillIcon} size={'giant'} appearance='ghost'
-                                         onPressIn={handleRemoveToFavorite}>Retirer</Button>}
+        <ScrollView>
+            <View style={styles.header}>
+                <DetailPrincipal current={current} daily={daily}/>
+                <View style={{justifyContent: 'center'}}>
+                    {!isInFavorite && <Button accessoryLeft={HeartOutlineIcon} size={'giant'} appearance='ghost'
+                                              onPressIn={handleAddToFavorite}>Ajouter</Button>}
+                    {isInFavorite && <Button accessoryLeft={HeartFillIcon} size={'giant'} appearance='ghost'
+                                             onPressIn={handleRemoveToFavorite}>Retirer</Button>}
+                </View>
             </View>
-        </View>
 
-        <View style={styles.module}>
-            <DetailMeteoHeure hourly={hourly}/>
-        </View>
+            <View style={styles.module}>
+                <DetailMeteoHeure hourly={hourly}/>
+            </View>
 
-        <View style={styles.module}>
-            <DetailInformation current={current}/>
-        </View>
+            <View style={styles.module}>
+                <DetailInformation current={current}/>
+            </View>
 
-        <View style={styles.module}>
-            <DetailSoleil current={current}/>
-        </View>
+            <View style={styles.module}>
+                <DetailSoleil current={current}/>
+            </View>
 
-        <View style={styles.module}>
-            <DetailMeteoSemaine daily={daily}/>
-        </View>
+            <View style={styles.module}>
+                <DetailMeteoSemaine daily={daily}/>
+            </View>
+        </ScrollView>
     </Layout>
 };
 

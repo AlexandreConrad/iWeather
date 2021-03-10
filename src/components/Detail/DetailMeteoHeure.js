@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, View, ScrollView} from "react-native"
+import {Image, StyleSheet, View, ScrollView, Dimensions} from "react-native"
 import {Layout, Text} from "@ui-kitten/components";
 import {getMeteoIcon} from "../../api/WeatherMap";
 import {toHours} from "../../util/date";
@@ -48,9 +48,11 @@ const DetailMeteoHeure = ({hourly}) => {
         return items
     }
 
+    const {width} = Dimensions.get('window');
+
     return <Layout level={"2"}>
         <ScrollView horizontal={true}>
-            <View>
+            <View style={{minWidth: width}}>
                 <View style={{...styles.row, zIndex: 2}}>
                     {render()}
                 </View>
